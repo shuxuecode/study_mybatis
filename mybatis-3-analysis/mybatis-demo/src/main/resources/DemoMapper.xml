@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+       Copyright 2009-2021 the original author or authors.
+
+       Licensed under the Apache License, Version 2.0 (the "License");
+       you may not use this file except in compliance with the License.
+       You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+       Unless required by applicable law or agreed to in writing, software
+       distributed under the License is distributed on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       See the License for the specific language governing permissions and
+       limitations under the License.
+
+-->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.apache.ibatis.demo">
+  <resultMap type="org.apache.ibatis.demo.Demo" id="demo">
+    <result column="id" property="id" jdbcType="INTEGER"/>
+    <result column="name" property="name" jdbcType="VARCHAR"/>
+    <result column="money" property="money" jdbcType="BIGINT"/>
+<!--    <result column="longinteger" property="longinteger" jdbcType="BIGINT"/>-->
+
+  </resultMap>
+
+
+  <select id="findAll" >
+    select * from ibtest.names
+  </select>
+
+<!--  <select id="select" parameterType="org.apache.ibatis.submitted.dynsql.Parameter" resultType="map">-->
+<!--    <if test="enabled">-->
+<!--      <foreach collection="ids" item="id" separator="union">-->
+<!--        <if test="schema != null">-->
+<!--          select * from ${schema}.names where id = #{id}-->
+<!--        </if>-->
+<!--      </foreach>-->
+<!--    </if>-->
+<!--  </select>-->
+
+<!--  <select id="select_simple" parameterType="org.apache.ibatis.submitted.dynsql.Parameter" resultType="map">-->
+<!--    <foreach collection="ids" index="index" item="id" separator="union">-->
+<!--      select * from ${schema}.names where id = #{id}-->
+<!--    </foreach>-->
+<!--  </select>-->
+
+<!--  <select id="selectNumerics" resultMap="numericRow">-->
+<!--    select * from ibtest.numerics-->
+<!--  </select>-->
+
+<!--  <select id="selectLike" resultType="map" parameterType="string">-->
+<!--    <bind name="pattern" value="'%' + _parameter + '%'" />-->
+<!--    SELECT *-->
+<!--    FROM ibtest.names-->
+<!--    WHERE description LIKE #{pattern}-->
+<!--    ORDER BY id-->
+<!--  </select>-->
+
+<!--  <select id="ognlStaticMethodCall" resultType="map" parameterType="string">-->
+<!--    <bind name="escapedLiteral" value="@org.apache.ibatis.submitted.dynsql.CustomUtil@esc(_parameter)" />-->
+<!--    SELECT *-->
+<!--    FROM ibtest.names-->
+<!--    WHERE description LIKE '${escapedLiteral}'-->
+<!--    ORDER BY id-->
+<!--  </select>-->
+
+</mapper>
