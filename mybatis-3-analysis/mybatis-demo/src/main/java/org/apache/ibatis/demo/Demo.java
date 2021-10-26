@@ -1,7 +1,5 @@
 package org.apache.ibatis.demo;
 
-import java.util.Date;
-
 /**
  * @date 2021/10/25
  */
@@ -9,11 +7,8 @@ public class Demo {
 
     private Integer id;
 
-    private String name;
-
-    private Long money;
-
-    private Date birthday;
+    private String username;
+    private String password;
 
     //
     //
@@ -26,27 +21,19 @@ public class Demo {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public Long getMoney() {
-        return money;
+    public String getPassword() {
+        return password;
     }
 
-    public void setMoney(Long money) {
-        this.money = money;
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

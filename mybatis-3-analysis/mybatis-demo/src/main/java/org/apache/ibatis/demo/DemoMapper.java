@@ -22,7 +22,9 @@ import java.util.List;
 public interface DemoMapper {
     String selectDescription(@Param("p") String p);
 
-    List findAll();
+    List<Demo> findAll();
+
+    List<Demo> findByUsername(String username);
 
     List<String> selectDescriptionById(Integer id);
     //List<String> selectDescriptionByConditions(Conditions conditions);

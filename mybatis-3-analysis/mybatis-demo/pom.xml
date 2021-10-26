@@ -30,6 +30,11 @@
             <version>8.0.27</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.75</version>
+        </dependency>
 
 <!--
         引入下面两个jar，是为了解决报错：

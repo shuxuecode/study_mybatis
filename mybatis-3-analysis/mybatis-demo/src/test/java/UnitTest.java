@@ -1,3 +1,4 @@
+import com.alibaba.fastjson.JSON;
 import org.apache.ibatis.demo.Demo;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -16,23 +17,22 @@ public class UnitTest {
 
     public static void main(String[] args) throws IOException {
 
-        InputStream resourceAsStream = Resources.getResourceAsStream("MapperConfig.xml");
+        InputStream resourceAsStream = Resources.getResourceAsStream("MybatisConfig.xml");
 
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
 
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
-        List<Demo> list = sqlSession.selectList("DemoMapper.findAll");
+        List<Demo> list = sqlSession.selectList("org.apache.ibatis.demo.DemoMapper.findAll");
+
 
         System.out.println(list);
+        System.out.println();
+        System.out.println(JSON.toJSONString(list));
+        System.out.println(JSON.toJSONString(list));
+
 
         sqlSession.close();
-    }
-
-
-    @Test
-    public void t() {
-
     }
 
 
