@@ -47,6 +47,8 @@ import org.apache.ibatis.type.TypeHandlerRegistry;
 /**
  * @author Clinton Begin
  */
+// todo mark BaseExecutor 使用了模板方法模式
+// 模板方法模式就是定义一个算法骨架，并允许子类为一个或者多个步骤提供实现。模板方法使得子类可以在不改变算法结构的情况下，重新定义算法的某些步骤。
 public abstract class BaseExecutor implements Executor {
 
   private static final Log log = LogFactory.getLog(BaseExecutor.class);

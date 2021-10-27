@@ -1,5 +1,6 @@
 import com.alibaba.fastjson.JSON;
 import org.apache.ibatis.demo.Demo;
+import org.apache.ibatis.demo.DemoMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -31,6 +32,16 @@ public class UnitTest2 {
         sqlSession.close();
     }
 
+    @Test
+    public void t2() throws IOException {
+
+        DemoMapper mapper = sqlSession.getMapper(DemoMapper.class);
+
+        List<Demo> list = mapper.findAll();
+
+        System.out.println(JSON.toJSONString(list));
+
+    }
     @Test
     public void t1() throws IOException {
 

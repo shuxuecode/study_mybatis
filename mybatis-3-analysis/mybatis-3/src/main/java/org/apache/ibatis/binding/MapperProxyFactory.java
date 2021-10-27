@@ -26,6 +26,7 @@ import org.apache.ibatis.session.SqlSession;
 /**
  * @author Lasse Voss
  */
+// todo mark mapper代理工厂
 public class MapperProxyFactory<T> {
 
   private final Class<T> mapperInterface;
@@ -45,6 +46,7 @@ public class MapperProxyFactory<T> {
 
   @SuppressWarnings("unchecked")
   protected T newInstance(MapperProxy<T> mapperProxy) {
+    // todo mark 基于jdk代理实现
     return (T) Proxy.newProxyInstance(mapperInterface.getClassLoader(), new Class[] { mapperInterface }, mapperProxy);
   }
 

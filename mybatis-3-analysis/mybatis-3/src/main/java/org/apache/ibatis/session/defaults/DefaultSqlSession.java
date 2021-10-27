@@ -46,8 +46,10 @@ import org.apache.ibatis.session.SqlSession;
  * @author Clinton Begin
  */
 public class DefaultSqlSession implements SqlSession {
-
+  // todo mark 有两个重要的属性
+  // 配置
   private final Configuration configuration;
+  // 执行器
   private final Executor executor;
 
   private final boolean autoCommit;

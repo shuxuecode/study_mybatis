@@ -664,10 +664,12 @@ public class Configuration {
     return newExecutor(transaction, defaultExecutorType);
   }
 
+  // todo mark 创建Executor
   public Executor newExecutor(Transaction transaction, ExecutorType executorType) {
     executorType = executorType == null ? defaultExecutorType : executorType;
     executorType = executorType == null ? ExecutorType.SIMPLE : executorType;
     Executor executor;
+    // 1、创建执行器，不同实现
     if (ExecutorType.BATCH == executorType) {
       executor = new BatchExecutor(this, transaction);
     } else if (ExecutorType.REUSE == executorType) {
@@ -675,9 +677,11 @@ public class Configuration {
     } else {
       executor = new SimpleExecutor(this, transaction);
     }
+    // 2、如果cacheEnabled=true，会用装饰器设计模式对Executor进行装饰。
     if (cacheEnabled) {
       executor = new CachingExecutor(executor);
     }
+    // 3、插件代理
     executor = (Executor) interceptorChain.pluginAll(executor);
     return executor;
   }

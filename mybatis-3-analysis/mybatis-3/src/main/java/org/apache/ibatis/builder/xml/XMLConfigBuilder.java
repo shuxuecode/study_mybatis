@@ -96,10 +96,12 @@ public class XMLConfigBuilder extends BaseBuilder {
       throw new BuilderException("Each XMLConfigBuilder can only be used once.");
     }
     parsed = true;
+    // todo mark 解析config.xml下configuration标签里所有的内容
     parseConfiguration(parser.evalNode("/configuration"));
     return configuration;
   }
 
+  // todo mark
   private void parseConfiguration(XNode root) {
     try {
       // issue #117 read properties first
@@ -157,6 +159,7 @@ public class XMLConfigBuilder extends BaseBuilder {
     configuration.setLogImpl(logImpl);
   }
 
+  // todo mark
   private void typeAliasesElement(XNode parent) {
     if (parent != null) {
       for (XNode child : parent.getChildren()) {
@@ -181,6 +184,7 @@ public class XMLConfigBuilder extends BaseBuilder {
     }
   }
 
+  // todo mark 插件解析
   private void pluginElement(XNode parent) throws Exception {
     if (parent != null) {
       for (XNode child : parent.getChildren()) {
@@ -219,6 +223,7 @@ public class XMLConfigBuilder extends BaseBuilder {
     }
   }
 
+  // todo mark
   private void propertiesElement(XNode context) throws Exception {
     if (context != null) {
       Properties defaults = context.getChildrenAsProperties();
