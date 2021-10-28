@@ -7,15 +7,19 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.jupiter.api.*;
+import org.junit.platform.commons.logging.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  */
 public class UnitTest2 {
+
     SqlSession sqlSession = null;
 
     @BeforeEach

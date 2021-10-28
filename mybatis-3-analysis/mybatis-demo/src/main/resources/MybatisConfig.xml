@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
-    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-  <properties resource="jdbc.properties"></properties>
-  
-  <settings>
-    <setting name="mapUnderscoreToCamelCase" value="true"/>
-  </settings>
+    <properties resource="jdbc.properties"></properties>
 
-  <environments default="development">
-    <environment id="development">
-      <transactionManager type="JDBC">
-<!--        <property name="" value=""/>-->
-      </transactionManager>
-      <dataSource type="POOLED">
-        <property name="driver" value="${driver}"/>
-        <property name="url" value="${url}"/>
-        <property name="username" value="${username}"/>
-        <property name="password" value="${password}"/>
-      </dataSource>
-    </environment>
-  </environments>
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
 
-  <mappers>
-    <mapper resource="mapper/DemoMapper.xml"/>
-<!--    <mapper class="org.apache.ibatis.demo.DemoMapper" />-->
-  </mappers>
+    <plugins>
+        <plugin interceptor="org.apache.ibatis.demo.config.MyDemoInterceptor">
+            <property name="pluginName" value="myDemoInterceptor"/>
+        </plugin>
+    </plugins>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC">
+                <!--        <property name="" value=""/>-->
+            </transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="mapper/DemoMapper.xml"/>
+        <!--    <mapper class="org.apache.ibatis.demo.DemoMapper" />-->
+    </mappers>
 
 </configuration>
