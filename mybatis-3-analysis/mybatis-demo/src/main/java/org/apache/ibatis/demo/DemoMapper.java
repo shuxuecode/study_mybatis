@@ -17,16 +17,19 @@ package org.apache.ibatis.demo;
 
 import org.apache.ibatis.annotations.Param;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface DemoMapper {
-    String selectDescription(@Param("p") String p);
+    List<Demo> selectByParam(@Param("search") Object search);
 
     List<Demo> findAll();
 
     List<Demo> findByUsername(String username);
 
     List<String> selectDescriptionById(Integer id);
+
+
     //List<String> selectDescriptionByConditions(Conditions conditions);
     //List<String> selectDescriptionByConditions2(Conditions conditions);
     //List<String> selectDescriptionByConditions3(Conditions conditions);

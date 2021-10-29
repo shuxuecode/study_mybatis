@@ -1,4 +1,5 @@
 import com.alibaba.fastjson.JSON;
+import com.google.common.collect.Lists;
 import org.apache.ibatis.demo.Demo;
 import org.apache.ibatis.demo.DemoMapper;
 import org.apache.ibatis.io.Resources;
@@ -11,6 +12,7 @@ import org.junit.platform.commons.logging.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,6 +39,19 @@ public class UnitTest2 {
     }
 
     @Test
+    public void t3() throws IOException {
+        DemoMapper mapper = sqlSession.getMapper(DemoMapper.class);
+
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("username", "a");
+        params.put("ids", Lists.newArrayList(5, 6, 7));
+
+        List<Demo> list = mapper.selectByParam(params);
+
+        System.out.println(JSON.toJSONString(list));
+    }
+
+    @Test
     public void t2() throws IOException {
 
         DemoMapper mapper = sqlSession.getMapper(DemoMapper.class);
@@ -46,6 +61,7 @@ public class UnitTest2 {
         System.out.println(JSON.toJSONString(list));
 
     }
+
     @Test
     public void t1() throws IOException {
 

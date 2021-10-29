@@ -29,7 +29,10 @@ public class MyDemoInterceptor implements Interceptor {
      */
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
-        System.out.println("对StatementHandler.prepare方法进行增强");
+        //System.out.println("对StatementHandler.prepare方法进行增强");
+
+
+
         // 执行原方法
         return invocation.proceed();
     }
@@ -42,6 +45,9 @@ public class MyDemoInterceptor implements Interceptor {
      */
     @Override
     public Object plugin(Object target) {
+
+
+
         return Interceptor.super.plugin(target);
     }
 

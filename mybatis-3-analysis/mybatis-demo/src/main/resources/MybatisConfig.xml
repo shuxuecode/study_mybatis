@@ -3,20 +3,22 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
-<configuration>
+<configuration> <!-- 全局配置文件 -->
     <properties resource="jdbc.properties"></properties>
 
-    <settings>
+    <settings> <!-- 全局配置参数 -->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
 
-    <plugins>
+    <plugins> <!-- 插件 -->
         <plugin interceptor="org.apache.ibatis.demo.config.MyDemoInterceptor">
             <property name="pluginName" value="myDemoInterceptor"/>
         </plugin>
+
+        <plugin interceptor="org.apache.ibatis.demo.config.MybatisSqlInterceptor" />
     </plugins>
 
-    <environments default="development">
+    <environments default="development"> <!-- 环境集合属性对象 -->
         <environment id="development">
             <transactionManager type="JDBC">
                 <!--        <property name="" value=""/>-->
@@ -30,9 +32,12 @@
         </environment>
     </environments>
 
-    <mappers>
+    <mappers> <!-- 映射器 -->
         <mapper resource="mapper/DemoMapper.xml"/>
-        <!--    <mapper class="org.apache.ibatis.demo.DemoMapper" />-->
+<!--    还有下面三种格式    -->
+<!--        <mapper class="org.apache.ibatis.demo.DemoMapper" />-->
+<!--        <mapper url="file:///root/data/project/mybatis-demo/mapper/mapper.xml" />-->
+<!--        <package name="org.apache.ibatis"/>-->
     </mappers>
 
 </configuration>
