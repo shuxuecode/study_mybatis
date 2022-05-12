@@ -12,6 +12,7 @@
         <module>mybatis-3</module>
         <module>mybatis-parent</module>
         <module>mybatis-demo</module>
+        <module>mybatis-demo-h2</module>
     </modules>
 
 </project>
