@@ -31,6 +31,27 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!--
+        引入下面两个jar，是为了解决报错：
+        Cannot enable lazy loading because Javassist is not available. Add Javassist to your classpath.
+        Caused by: java.lang.ClassNotFoundException: Cannot find class: javassist.util.proxy.ProxyFactory
+-->
+        <dependency>
+            <groupId>ognl</groupId>
+            <artifactId>ognl</artifactId>
+            <version>3.2.15</version>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.27.0-GA</version>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+
+
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>
             <artifactId>fastjson2</artifactId>

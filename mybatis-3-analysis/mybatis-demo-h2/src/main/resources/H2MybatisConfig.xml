@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration> <!-- 全局配置文件 -->
+    <properties resource="jdbc.properties"></properties>
+
+    <settings> <!-- 全局配置参数 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+<!--    <plugins> &lt;!&ndash; 插件 &ndash;&gt;-->
+<!--        <plugin interceptor="org.apache.ibatis.demo.config.MyDemoInterceptor">-->
+<!--            <property name="pluginName" value="myDemoInterceptor"/>-->
+<!--        </plugin>-->
+
+<!--        <plugin interceptor="org.apache.ibatis.demo.config.MybatisSqlInterceptor" />-->
+<!--    </plugins>-->
+
+    <environments default="development"> <!-- 环境集合属性对象 -->
+        <environment id="development">
+            <transactionManager type="JDBC">
+                <!--        <property name="" value=""/>-->
+            </transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers> <!-- 映射器 -->
+        <mapper resource="mapper/DemoMapper.xml"/>
+<!--    还有下面三种格式    -->
+<!--        <mapper class="org.apache.ibatis.demo.DemoMapper" />-->
+<!--        <mapper url="file:///root/data/project/mybatis-demo/mapper/mapper.xml" />-->
+<!--        <package name="org.apache.ibatis"/>-->
+    </mappers>
+
+</configuration>

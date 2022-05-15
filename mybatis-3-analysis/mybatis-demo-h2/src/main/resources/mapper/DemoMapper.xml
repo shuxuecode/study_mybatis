@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.demo.h2.DemoMapper">
+    <resultMap type="mybatis.demo.h2.Demo" id="ResultMap">
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <!--    <result column="longinteger" property="longinteger" jdbcType="BIGINT"/>-->
+
+    </resultMap>
+
+
+    <select id="findAll" resultMap="ResultMap">
+        select * from t_user
+    </select>
+
+    <select id="findByUsername" resultMap="ResultMap" parameterType="java.lang.String">
+        select * from t_user where username = #{username}
+    </select>
+
+
+    <select id="selectByParam" resultMap="ResultMap">
+        select * from t_user
+        <where>
+            1=1
+            <if test="search.username != null">
+                and username = #{search.username, jdbcType=VARCHAR}
+            </if>
+            <if test="search.password != null">
+                and password = #{search.password, jdbcType=VARCHAR}
+            </if>
+            <if test="search.ids != null and search.ids.size() > 0">
+                and id in
+                <foreach collection="search.ids" item="item" index="index" open="(" close=")" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+<!--    void createTable(String sql);-->
+    <update id="createTable" parameterType="java.lang.String">
+        create table t_user (
+            id int primary key,
+            username varchar(20) not null,
+            password varchar(20) not null
+        )
+    </update>
+
+    <!--  <select id="select" parameterType="org.apache.ibatis.submitted.dynsql.Parameter" resultType="map">-->
+    <!--    <if test="enabled">-->
+    <!--      <foreach collection="ids" item="id" separator="union">-->
+    <!--        <if test="schema != null">-->
+    <!--          select * from ${schema}.names where id = #{id}-->
+    <!--        </if>-->
+    <!--      </foreach>-->
+    <!--    </if>-->
+    <!--  </select>-->
+
+    <!--  <select id="select_simple" parameterType="org.apache.ibatis.submitted.dynsql.Parameter" resultType="map">-->
+    <!--    <foreach collection="ids" index="index" item="id" separator="union">-->
+    <!--      select * from ${schema}.names where id = #{id}-->
+    <!--    </foreach>-->
+    <!--  </select>-->
+
+    <!--  <select id="selectNumerics" resultMap="numericRow">-->
+    <!--    select * from ibtest.numerics-->
+    <!--  </select>-->
+
+    <!--  <select id="selectLike" resultType="map" parameterType="string">-->
+    <!--    <bind name="pattern" value="'%' + _parameter + '%'" />-->
+    <!--    SELECT *-->
+    <!--    FROM ibtest.names-->
+    <!--    WHERE description LIKE #{pattern}-->
+    <!--    ORDER BY id-->
+    <!--  </select>-->
+
+    <!--  <select id="ognlStaticMethodCall" resultType="map" parameterType="string">-->
+    <!--    <bind name="escapedLiteral" value="@org.apache.ibatis.submitted.dynsql.CustomUtil@esc(_parameter)" />-->
+    <!--    SELECT *-->
+    <!--    FROM ibtest.names-->
+    <!--    WHERE description LIKE '${escapedLiteral}'-->
+    <!--    ORDER BY id-->
+    <!--  </select>-->
+
+</mapper>
