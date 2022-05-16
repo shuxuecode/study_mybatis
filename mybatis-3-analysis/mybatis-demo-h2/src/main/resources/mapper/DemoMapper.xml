@@ -42,7 +42,7 @@
         </where>
     </select>
 
-<!--    void createTable(String sql);-->
+<!--
     <update id="createTable" parameterType="java.lang.String">
         create table t_user (
             id int primary key,
@@ -50,6 +50,11 @@
             password varchar(20) not null
         )
     </update>
+-->
+
+    <insert id="insert" parameterType="mybatis.demo.h2.Demo">
+        insert into t_user values(#{id}, #{username}, #{password})
+    </insert>
 
     <!--  <select id="select" parameterType="org.apache.ibatis.submitted.dynsql.Parameter" resultType="map">-->
     <!--    <if test="enabled">-->

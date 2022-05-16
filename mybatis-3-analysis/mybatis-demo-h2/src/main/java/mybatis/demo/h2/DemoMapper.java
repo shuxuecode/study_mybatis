@@ -16,7 +16,9 @@ package mybatis.demo.h2;
  */
 
 import mybatis.demo.h2.Demo;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -29,7 +31,18 @@ public interface DemoMapper {
 
     List<String> selectDescriptionById(Integer id);
 
+    //@Update(" create table t_user (\n" +
+    //        " id int primary key,\n" +
+    //        " username varchar(20) not null,\n" +
+    //        " password varchar(20) not null\n" +
+    //        " )")
+    @Update("${sql}")
     void createTable(String sql);
+
+    Long insert(Demo demo);
+
+    @Insert("INSERT INTO t_user (id, username, password) VALUES (#{id}, #{username}, #{password})")
+    Long save(Demo demo);
 
     //List<String> selectDescriptionByConditions(Conditions conditions);
     //List<String> selectDescriptionByConditions2(Conditions conditions);
