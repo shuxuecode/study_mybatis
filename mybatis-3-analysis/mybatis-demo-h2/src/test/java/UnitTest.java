@@ -1,3 +1,5 @@
+import com.alibaba.fastjson2.JSON;
+
 import java.sql.*;
 
 /**
@@ -31,6 +33,7 @@ public class UnitTest {
             System.out.print("id = " + resultSet.getInt("id"));
             System.out.print("name = " + resultSet.getString("name"));
             System.out.print("age = " + resultSet.getInt("age"));
+
 
             System.out.println();
         }

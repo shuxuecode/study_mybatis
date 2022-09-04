@@ -18,6 +18,12 @@
 <!--        <plugin interceptor="org.apache.ibatis.demo.config.MybatisSqlInterceptor" />-->
 <!--    </plugins>-->
 
+    <plugins>
+        <plugin interceptor="mybatis.demo.h2.config.DemoInterceptor">
+            <property name="pluginName" value="demoInterceptor"/>
+        </plugin>
+    </plugins>
+
     <environments default="development"> <!-- 环境集合属性对象 -->
         <environment id="development">
             <transactionManager type="JDBC">
