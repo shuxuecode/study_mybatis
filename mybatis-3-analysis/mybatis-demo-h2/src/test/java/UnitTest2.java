@@ -30,20 +30,25 @@ public class UnitTest2 {
 
         sqlSession = sqlSessionFactory.openSession();
 
+        try {
+            DemoMapper demoMapper = sqlSession.getMapper(DemoMapper.class);
+            //demoMapper.createTable(
+            //        "create table t_user ( " +
+            //                "id int primary key, " +
+            //                "username varchar(20) not null, " +
+            //                "password varchar(20) not null " +
+            //                ")");
 
-        DemoMapper demoMapper = sqlSession.getMapper(DemoMapper.class);
-        //demoMapper.createTable(
-        //        "create table t_user ( " +
-        //                "id int primary key, " +
-        //                "username varchar(20) not null, " +
-        //                "password varchar(20) not null " +
-        //                ")");
+            Demo demo = new Demo();
+            demo.setId(2);
+            demo.setUsername("a");
+            demo.setPassword("b");
+            demoMapper.insert(demo);
 
-        Demo demo = new Demo();
-        demo.setId(2);
-        demo.setUsername("a");
-        demo.setPassword("b");
-        demoMapper.insert(demo);
+            sqlSession.commit();
+        } finally {
+            //sqlSession.close();
+        }
     }
 
     @AfterEach
