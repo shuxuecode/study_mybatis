@@ -23,6 +23,7 @@ import java.sql.SQLException;
  *
  * @author Clinton Begin
  */
+// todo mark 设置预编译参数
 public interface ParameterHandler {
 
   Object getParameterObject();

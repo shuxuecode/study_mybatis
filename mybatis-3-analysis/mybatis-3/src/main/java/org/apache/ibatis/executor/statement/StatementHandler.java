@@ -28,6 +28,7 @@ import org.apache.ibatis.session.ResultHandler;
 /**
  * @author Clinton Begin
  */
+// todo mark 处理sql语句预编译，设置参数等相关工作
 public interface StatementHandler {
 
   Statement prepare(Connection connection, Integer transactionTimeout)

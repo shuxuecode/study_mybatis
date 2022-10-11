@@ -51,6 +51,7 @@ import org.apache.ibatis.type.JdbcType;
  * @author Clinton Begin
  * @author Kazuki Shimizu
  */
+// todo mark 用于解析Mybatis配置文件
 public class XMLConfigBuilder extends BaseBuilder {
 
   private boolean parsed;
@@ -101,6 +102,7 @@ public class XMLConfigBuilder extends BaseBuilder {
     return configuration;
   }
 
+  // todo mark 核心代码，解析配置文件中的各个节点的配置
   // todo mark
   private void parseConfiguration(XNode root) {
     try {

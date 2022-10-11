@@ -30,6 +30,7 @@ import org.apache.ibatis.transaction.Transaction;
 /**
  * @author Clinton Begin
  */
+// todo mark 执行器，用于执行增删改查操作
 public interface Executor {
 
   ResultHandler NO_RESULT_HANDLER = null;
