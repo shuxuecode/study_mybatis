@@ -44,20 +44,5 @@ public interface DemoMapper {
     @Insert("INSERT INTO t_user (id, username, password) VALUES (#{id}, #{username}, #{password})")
     Long save(Demo demo);
 
-    //List<String> selectDescriptionByConditions(Conditions conditions);
-    //List<String> selectDescriptionByConditions2(Conditions conditions);
-    //List<String> selectDescriptionByConditions3(Conditions conditions);
-    //
-    //class Conditions {
-    //  private Integer id;
-    //
-    //  public void setId(Integer id) {
-    //    this.id = id;
-    //  }
-    //
-    //  public Integer getId() {
-    //    return id;
-    //  }
-    //}
 
 }
